@@ -63,22 +63,20 @@ An Example List with Embedded Items:
 
 ![list](documentation/list-slug.png)
 
-## Site map
-
-(___TODO__: draw out a site map that shows how pages are related to each other_)
-
-Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia/commons/2/20/Sitemap_google.jpg), but you can create one without the screenshots, drop shadows, etc. ... just names of pages and where they flow to.
+## ![Site map](https://www.gloomaps.com/6H69np2mjP)
 
 ## User Stories or Use Cases
 
-(___TODO__: write out how your application will be used through [user stories](http://en.wikipedia.org/wiki/User_story#Format) and / or [use cases](https://www.mongodb.com/download-center?jmp=docs&_ga=1.47552679.1838903181.1489282706#previous)_)
+## (non-registered)
+1. as a user, I can upload a profile with the site
+2. as a user, I can pick one answer for each question (quiz/poll style)
+3. as a user, I can see what others guessed
+4. as a user, I can see the right answers
+5. as a user, I can share this with my friends (social media)
 
-1. as non-registered user, I can register a new account with the site
-2. as a user, I can log in to the site
-3. as a user, I can create a new grocery list
-4. as a user, I can view all of the grocery lists I've created in a single list
-5. as a user, I can add items to an existing grocery list
-6. as a user, I can cross off items in an existing grocery list
+## (registered)
+1. as a user, I can log in to the site
+2. as a user, I can remove bad profiles / answers
 
 ## Research Topics
 
@@ -98,10 +96,7 @@ Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia
 10 points total out of 8 required points (___TODO__: addtional points will __not__ count for extra credit_)
 
 
-## [Link to Initial Main Project File](app.js)
-
-(___TODO__: create a skeleton Express application with a package.json, app.js, views folder, etc. ... and link to your initial app.js_)
-
+## [Link to Initial Main Project File](https://github.com/nyu-csci-ua-0480-008-spring-2020/devinlewtan-final-project/blob/d7a93d52d3a7f440ab183288925033ad5d89984d/app.js#L1)
 
 ## Annotations / References Used
 
