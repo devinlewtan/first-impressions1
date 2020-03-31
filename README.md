@@ -1,15 +1,15 @@
-# First Impressions / Judge me 
+# First Impressions / Judge me
 
 ## Overview
 
-We all know the saying "don't judge a book by it's cover." First impressions are typically wrong and based on stereotypical profiling. But what if... someone explicitely requested you to judge them by an image?
+We all know the saying "don't judge a book by it's cover." First impressions are typically wrong and based on stereotypical profiling. But what if... someone explicitly requested you to judge them by an image?
 
-First Impressions is a web-based game that presents users with a photo of a stranger and a quiz about them with general attributes like name, city, job title, and more contentious attributes like race, sexual orientation, dietary restrictions, etc. How much can we truly uncover from an image of a person? How much falls through the cracks? First Impressions is fun for both those guessing about others as well as for those who upload a photo - what do people judge about your cover? 
+First Impressions is a web-based game that presents users with a photo of a stranger and a quiz about them with general attributes like name, city, job title, and more contentious attributes like race, sexual orientation, dietary restrictions, etc. How much can we truly uncover from an image of a person? How much falls through the cracks? First Impressions is fun for both those guessing about others as well as for those who upload a photo - what do people judge about your cover?
 
 
 ## Data Model
 
-(___TODO__: a description of your application's data and their relationships to each other_) 
+(___TODO__: a description of your application's data and their relationships to each other_)
 
 The application will store UserProfiles (user-uploaded), Lists and Items
 
@@ -43,7 +43,7 @@ An Example List with Embedded Items:
 ```
 
 
-## [Link to Commented First Draft Schema](db.js) 
+## [Link to Commented First Draft Schema](db.js)
 
 (___TODO__: create a first draft of your Schemas in db.js and link to it_)
 
@@ -98,7 +98,7 @@ Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia
 10 points total out of 8 required points (___TODO__: addtional points will __not__ count for extra credit_)
 
 
-## [Link to Initial Main Project File](app.js) 
+## [Link to Initial Main Project File](app.js)
 
 (___TODO__: create a skeleton Express application with a package.json, app.js, views folder, etc. ... and link to your initial app.js_)
 
@@ -109,4 +109,3 @@ Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia
 
 1. [passport.js authentication docs](http://passportjs.org/docs) - (add link to source code that was based on this)
 2. [tutorial on vue.js](https://vuejs.org/v2/guide/) - (add link to source code that was based on this)
-
