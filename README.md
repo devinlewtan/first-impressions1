@@ -6,76 +6,80 @@ We all know the saying "don't judge a book by it's cover." First impressions are
 
 First Impressions is a web-based game that presents users with a photo of a stranger and a quiz about them with general attributes like name, city, job title, and more contentious attributes like race, sexual orientation, dietary restrictions, etc. How much can we truly uncover from an image of a person? How much falls through the cracks? First Impressions is fun for both those guessing about others as well as for those who upload a photo - what do people judge about your cover?
 
-
 ## Data Model
 
-(___TODO__: a description of your application's data and their relationships to each other_)
+The application will store Profiles (user-uploaded), Users and Questions
 
-The application will store UserProfiles (user-uploaded), Lists and Items
-
-* users can have multiple lists (via references)
-* each list can have multiple items (by embedding)
-
-(___TODO__: sample documents_)
+* users can have one profile (via references)
+* each profile can have multiple questions (by embedding)
 
 An Example User:
 
 ```javascript
 {
-  username: "shannonshopper",
-  hash: // a password hash,
-  lists: // an array of references to List documents
+  email: "devinlewtan@gmail.com",
+  password: "$ecret$auce",
+  profile: // an array of references to Question objects
 }
 ```
 
-An Example List with Embedded Items:
+An Example Profile with Embedded Questions:
 
 ```javascript
 {
-  user: // a reference to a User object
-  name: "Breakfast foods",
-  items: [
-    { name: "pancakes", quantity: "9876", checked: false},
-    { name: "ramen", quantity: "2", checked: true},
-  ],
-  createdAt: // timestamp
+  email: // a reference to a User object
+  image: 'images/girl.jpg',
+  questions: [
+    {
+    label: "what is my name?",
+    options: [
+      { value: "Devin", checked: true }, 
+      { value: "Olivia", checked: false }, 
+      { value: "Mackenzie", checked: false }, 
+      { value: "Jessica", checked: false },
+      ]
+   ,
 }
 ```
 
-## [Link to Commented First Draft Schema](db.js)
-
-(___TODO__: create a first draft of your Schemas in db.js and link to it_)
+## [Link to Commented First Draft Schema](https://github.com/nyu-csci-ua-0480-008-spring-2020/devinlewtan-final-project/blob/6b9c07d862e3c4e1b2b903ec97d8684cc32678c6/db.js#L4)
 
 ## Wireframes
 
-(___TODO__: wireframes for all of the pages on your site; they can be as simple as photos of drawings or you can use a tool like Balsamiq, Omnigraffle, etc._)
+/ - page for showing all profiles (one at a time)
 
-/list/create - page for creating a new shopping list
+![homepage](wireframes/wireframe_home.png)
 
-![list create](documentation/list-create.png)
+/signup - page for registering new user (same wireframe as login right now)
 
-/list - page for showing all shopping lists
+![user signup](wireframes/wireframe_signin.png)
 
-![list](documentation/list.png)
+/login - page for user login 
 
-/list/slug - page for showing specific shopping list
+![user login](wireframes/wireframe_signin.png)
 
-![list](documentation/list-slug.png)
+/profile/create - page for creating a new profile 
+
+![profile create](wireframes/wireframe_create_profile.png)
+
+/profile/results - page for showing how your profile is being judged
+
+![profile results](wireframes/wireframes_profile_results.png)
 
 ## [Site map](https://www.gloomaps.com/6H69np2mjP)
 
 ## User Stories or Use Cases
 
 ###### (non-registered)
-1. as a user, I can upload a profile with the site
-2. as a user, I can pick one answer for each question (quiz/poll style)
-3. as a user, I can see what others guessed
-4. as a user, I can see the right answers
-5. as a user, I can share this with my friends (social media)
+1. as a user, I can pick one answer for each profile (quiz/poll style)
+2. as a user, I can see the right answers once i've played 
 
 ###### (registered)
-1. as a user, I can log in to the site
-2. as a user, I can remove bad profiles / answers
+1. as a user, I can register an account on the site
+2. as a user, I can log in to the site
+3. as a user, I can upload a profile with the site
+4. as a user, I can see what others guessed
+5. as a user, I can share this with my friends (social media)
 
 ## Research Topics
 
