@@ -68,7 +68,7 @@ An Example Profile with Embedded Questions:
 
 /profile/results - page for showing how your profile is being judged
 
-![profile results](wireframes/wireframes_profile_results.png)
+![profile results](wireframes/wireframe_profile_results.png)
 
 ## [Site map](https://www.gloomaps.com/6H69np2mjP)
 
