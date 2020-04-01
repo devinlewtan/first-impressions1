@@ -19,7 +19,7 @@ An Example User:
 {
   email: "devinlewtan@gmail.com",
   password: "$ecret$auce",
-  profile: // an array of references to Question objects
+  profile: // a reference to a Profile object
 }
 ```
 
