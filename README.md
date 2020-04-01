@@ -88,13 +88,14 @@ An Example Profile with Embedded Questions:
     * I want login to be as frictionless as possible to encourage more users to create profiles 
 * (5 points) Implement quiz functionality / html
     * see <code>https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript</code>
-    * I've never had to build something that has multiple answers with right/wrong statuses. should be a bit challenging!
+    * I've never had to build something that has multiple answers with right/wrong statuses. It should be a good challenge for this assignment!
 * (4 points) React.js
-    * use react.js as the frontend framework
+    * use react.js as the frontend framework. I am looking forward to learning react because I feel it is a transferrable skill from school to full time engineering gigs.
+* maybe look into TypeScript? (seems like a more secure form of Javascript regarding type errors)
 
 ## [Link to Initial Main Project File](https://github.com/nyu-csci-ua-0480-008-spring-2020/devinlewtan-final-project/blob/d7a93d52d3a7f440ab183288925033ad5d89984d/app.js#L1)
 
 ## Annotations / References Used
 
 1. [Google user sign in](https://developers.google.com/identity/sign-in/web/sign-in) - (add link to source code that was based on this)
-2. [tutorial on redering quiz html](https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript) - (add link to source code that was based on this)
+2. [tutorial on quiz functionality / html](https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript) - (add link to source code that was based on this)
