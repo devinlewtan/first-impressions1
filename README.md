@@ -62,6 +62,10 @@ An Example Profile with Embedded Questions:
 
 ![profile create](wireframes/wireframe_create_profile.png)
 
+/profile/mine - page for showing how your profile looks (same as home page for non registered users)
+
+![profile example](wireframes/wireframe_example.png)
+
 /profile/results - page for showing how your profile is being judged
 
 ![profile results](wireframes/wireframes_profile_results.png)
