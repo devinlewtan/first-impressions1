@@ -42,7 +42,6 @@ An Example List with Embedded Items:
 }
 ```
 
-
 ## [Link to Commented First Draft Schema](db.js)
 
 (___TODO__: create a first draft of your Schemas in db.js and link to it_)
@@ -63,44 +62,35 @@ An Example List with Embedded Items:
 
 ![list](documentation/list-slug.png)
 
-## ![Site map](https://www.gloomaps.com/6H69np2mjP)
+## [Site map](https://www.gloomaps.com/6H69np2mjP)
 
 ## User Stories or Use Cases
 
-## (non-registered)
+###### (non-registered)
 1. as a user, I can upload a profile with the site
 2. as a user, I can pick one answer for each question (quiz/poll style)
 3. as a user, I can see what others guessed
 4. as a user, I can see the right answers
 5. as a user, I can share this with my friends (social media)
 
-## (registered)
+###### (registered)
 1. as a user, I can log in to the site
 2. as a user, I can remove bad profiles / answers
 
 ## Research Topics
 
-(___TODO__: the research topics that you're planning on working on along with their point values... and the total points of research topics listed_)
-
-* (5 points) Integrate user authentication
-    * I'm going to be using passport for user authentication
-    * And account has been made for testing; I'll email you the password
-    * see <code>cs.nyu.edu/~jversoza/ait-final/register</code> for register page
-    * see <code>cs.nyu.edu/~jversoza/ait-final/login</code> for login page
-* (4 points) Perform client side form validation using a JavaScript library
-    * see <code>cs.nyu.edu/~jversoza/ait-final/my-form</code>
-    * if you put in a number that's greater than 5, an error message will appear in the dom
-* (5 points) vue.js
-    * used vue.js as the frontend framework; it's a challenging library to learn, so I've assigned it 5 points
-
-10 points total out of 8 required points (___TODO__: addtional points will __not__ count for extra credit_)
-
+* (4 points) Integrate [Google user sign in](https://developers.google.com/identity/sign-in/web/sign-in)
+    * I'm going to be using Google for user authentication
+    * I want login to be as frictionless as possible to encourage more users to create profiles 
+* (5 points) Implement quiz functionality / html
+    * see <code>https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript</code>
+    * I've never had to build something that has multiple answers with right/wrong statuses. should be a bit challenging!
+* (4 points) React.js
+    * use react.js as the frontend framework
 
 ## [Link to Initial Main Project File](https://github.com/nyu-csci-ua-0480-008-spring-2020/devinlewtan-final-project/blob/d7a93d52d3a7f440ab183288925033ad5d89984d/app.js#L1)
 
 ## Annotations / References Used
 
-(___TODO__: list any tutorials/references/etc. that you've based your code off of_)
-
-1. [passport.js authentication docs](http://passportjs.org/docs) - (add link to source code that was based on this)
-2. [tutorial on vue.js](https://vuejs.org/v2/guide/) - (add link to source code that was based on this)
+1. [Google user sign in](https://developers.google.com/identity/sign-in/web/sign-in) - (add link to source code that was based on this)
+2. [tutorial on redering quiz html](https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript) - (add link to source code that was based on this)
