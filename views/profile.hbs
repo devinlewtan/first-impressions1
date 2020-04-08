@@ -1,0 +1,48 @@
+<br/>
+<h2>Welcome, stranger!</h2>
+
+<p>To get started, upload an image of yourself. The less context, the better.</p>
+<p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)"></p>
+<!-- <p><label for="file" style="cursor: pointer;">Upload Image</label></p> -->
+<p><img id="output" width="200" /></p>
+
+<script>
+const loadFile = function(event) {
+	const image = document.getElementById('output');
+	image.src = URL.createObjectURL(event.target.files[0]);
+};
+const showQuestionForm = function() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+<p> Next, add up to 10 questions about yourself! Get creative with your answers.</p>
+
+<button type="button" onclick="showQuestionForm()">Add question +</button>
+
+<div id="myDIV" style="display: none">
+<form method="post" action="/profile">
+  Question: <input type="text" name="question"></br>
+  Answer a: <input type="text" name="a"></br>
+  Answer b: <input type="text" name="b"></br>
+  Answer c: <input type="text" name="c"></br>
+  Correct Answer (just the letter!): <input type="text" name="correctAnswer"></br>
+	<input type="submit" value="Save">
+</form>
+</div>
+
+{{#each questions}}
+<div>
+    <p>{{this.question}}</p>
+        <ul>
+            <li><label><input type="radio" name="q2" value="a">{{this.answers.a}}</label></li>
+            <li><label><input type="radio" name="q2" value="b"> {{this.answers.b}}</label></li>
+            <li><label><input type="radio" name="q2" value="c"> {{this.answers.c}}</label></li>
+        </ul>
+</div>
+{{/each}}

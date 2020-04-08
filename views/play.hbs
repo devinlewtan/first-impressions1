@@ -1,0 +1,15 @@
+
+<!-- Quiz Container -->
+{{#each questions}}
+<div>
+    <p>{{this.question}}</p>
+        <ul>
+            <li><label><input type="radio" name="q2" value="a">{{this.answers.a}}</label></li>
+            <li><label><input type="radio" name="q2" value="b"> {{this.answers.b}}</label></li>
+            <li><label><input type="radio" name="q2" value="c"> {{this.answers.c}}</label></li>
+        </ul>
+</div>
+{{/each}}
+<!-- Answer Button -->
+<button type="button" onclick="myAnswerCheckMethod();">Check Answers</button>
+</div>

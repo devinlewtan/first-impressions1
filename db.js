@@ -2,23 +2,54 @@
 const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
-	email: String,
-  password: String,
-  profile: ProfileSchema,
-});
-
-const ProfileSchema = new mongoose.Schema({
-	user: UserSchema,
-  image: String,
-  questions: [Question],
+	email: {
+    type: String,
+    unique: true,
+    required: true,
+    trim: true
+  },
+  password: {
+    type: String,
+    required: true,
+  },
 });
 
 const QuestionSchema = new mongoose.Schema({
-	label: String,
-  options: [Object]
+	profile_id: String,
+	question: String,
+  answers: Object,
+	correctAnswer: String,
 });
 
-mongoose.connect(dbconf, {useNewUrlParser: true, useUnifiedTopology: true, } )
+const ProfileSchema = new mongoose.Schema({
+	user_id: String,
+  image: String,
+  question_ids: [Object],
+});
+
+// is the environment variable, NODE_ENV, set to PRODUCTION?
+let dbconf;
+if (process.env.NODE_ENV === 'PRODUCTION') {
+ // if we're in PRODUCTION mode, then read the configration from a file
+ // use blocking file io to do this...
+ const fs = require('fs');
+ const path = require('path');
+ const fn = path.join(__dirname, './config.json');
+ const data = fs.readFileSync(fn);
+
+ const conf = JSON.parse(data);
+ dbconf = conf.dbconf;
+} else {
+ // if we're not in PRODUCTION mode, then use
+ dbconf = 'mongodb://localhost/impressions';
+}
+
+mongoose.connect(dbconf, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useCreateIndex: true,
+})
+
 mongoose.model('User', UserSchema);
 mongoose.model('Profile', ProfileSchema);
 mongoose.model('Question', QuestionSchema);
