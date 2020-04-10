@@ -1,17 +1,26 @@
+{{error}}
+{{success}}
 <br/>
 <h2>Welcome, stranger!</h2>
 
 <p>To get started, upload an image of yourself. The less context, the better.</p>
-<p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)"></p>
-<!-- <p><label for="file" style="cursor: pointer;">Upload Image</label></p> -->
-<p><img id="output" width="200" /></p>
+
+<form action="/uploadpicture" method="POST" enctype="multipart/form-data">
+<input type="file" name="picture" accept="application/x-zip-compressed,image/*" onchange="loadFile(event)">
+<br>
+<p><img id="output" width="200"/></p>
+<!-- here! -->
+<input class="btn btn-primary" type="submit" value="Save image" onchange="loadFile({{image}})">
+</form>
+
+{{image}}
 
 <script>
 const loadFile = function(event) {
 	const image = document.getElementById('output');
 	image.src = URL.createObjectURL(event.target.files[0]);
 };
-const showQuestionForm = function() {
+const showHide = function() {
   var x = document.getElementById("myDIV");
   if (x.style.display === "none") {
     x.style.display = "block";
@@ -23,7 +32,7 @@ const showQuestionForm = function() {
 
 <p> Next, add up to 10 questions about yourself! Get creative with your answers.</p>
 
-<button type="button" onclick="showQuestionForm()">Add question +</button>
+<button type="button" onclick="showHide()">Add question +</button>
 
 <div id="myDIV" style="display: none">
 <form method="post" action="/profile">
@@ -36,10 +45,14 @@ const showQuestionForm = function() {
 </form>
 </div>
 
+<!-- here! -->
+<img src='/public/images/{{image}}' />
+
 {{#each questions}}
 <div>
     <p>{{this.question}}</p>
         <ul>
+          <!-- here! need to change name to be associated with question number -->
             <li><label><input type="radio" name="q2" value="a">{{this.answers.a}}</label></li>
             <li><label><input type="radio" name="q2" value="b"> {{this.answers.b}}</label></li>
             <li><label><input type="radio" name="q2" value="c"> {{this.answers.c}}</label></li>

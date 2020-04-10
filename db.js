@@ -22,8 +22,15 @@ const QuestionSchema = new mongoose.Schema({
 });
 
 const ProfileSchema = new mongoose.Schema({
-	user_id: String,
-  image: String,
+	user_id: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  image: {
+		data: Buffer,
+		contentType: String
+	},
   question_ids: [Object],
 });
 
