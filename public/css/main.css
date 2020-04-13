@@ -1,25 +1,67 @@
-body {
-  background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);
-}
 
 * {
  font-size: 100%;
- font-family: Nunito;
+ font-family: 'Nunito', sans-serif;
+}
+
+#head {
+  font-size: 45px;
+  text-align: center;
+  color: black;
+}
+
+#head:hover {
+  animation: wiggle 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+   80% { transform: rotate(0deg); }
+   85% { transform: rotate(5deg); }
+   95% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
 }
 h1 {
+  font: "Nunito Black 900";
   font-size: 45px;
-  font-style: bold;
   text-align: center;
 }
 
 h2 {
   font-size: 25px;
   text-align: center;
+  color: #4BC4A1;
+}
+
+h3 {
+  font-size: 15px;
+  text-align: center;
+  color: black;
+}
+
+.button {
+  font-size: 20px;
+  background-color: #4BC4A1;
+  color: #E9ECA3;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: none;
+  border-radius: 40px;
+}
+a {
+  text-decoration: none;
+  color: #4BC4A1;
+}
+
+a:visited {
+  color: none;
 }
 
 .center {
-  position: fixed; /* or absolute */
-  left: 30%;
+  align-items: center;
 }
 
 .icon {
@@ -27,8 +69,50 @@ h2 {
 }
 
 .loginreg {
+  font-size: 15px;
+  text-align: right;
   display: inline-block;
   right: 1%;
   position: fixed;
   top: 1%;
+}
+
+body {
+  background-image: url("../images/book_background.png"), linear-gradient(60deg, #abecd6 0%, #fbed96 100%);
+  background-repeat: repeat;
+  /* background-image: ; */
+  align-items: center;
+  position: relative;
+}
+
+.message-box {
+  text-align: center;
+}
+
+
+.field {
+  margin: 10px;
+}
+
+.submit-btn {
+  width: 100%
+}
+
+.title {
+  margin: 10px 0px 20px 10px
+}
+
+.container {
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 20px;
+}
+
+#error-message {
+  color: #E91E63;
+  display: block;
+  margin: 10px;
+  font-size: large;
+  max-width: fit-content;
 }
