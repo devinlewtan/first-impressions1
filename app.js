@@ -134,39 +134,48 @@ app.get('/login', (req, res) => {
 
   app.get('/profile', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
   //render image and questions
-      res.render('profile', {error: err.errmsg})
-    }
-    else {
-      //create default profile for new user
-      if (profile.length === 0) {
-        const defaultProf = new Profile({
-          user_id: profile_id,
-          image: {data: '', contentType: ''},
-          question_ids: []
-        })
-        defaultProf.save((err, savedProf) => {
-          if (err) {
-             res.render('profile', {error: err.errmsg});
-          } else {
-            console.log(savedProf, "has been added to db!")
-          }
-        });
+    Profile.find({user_id: req.user.username}, function (err, profile) {
+      if (err) {
+        console.log(err)
+        res.render('profile', {error: err.errmsg})
       }
       else {
-      //find questions by their ids
-      Question.find({profile_id: profile_id}, function (err, questions) {
-        if (err) {
-          res.render('profile', {error: err.errmsg})
+        //create default profile for new user
+        if (profile.length === 0) {
+          const defaultProf = new Profile({
+            user_id: req.user.username,
+            image: {data: '', contentType: ''},
+            question_ids: []
+          })
+          defaultProf.save((err, savedProf) => {
+            if (err) {
+              console.log(err)
+              res.render('profile', {error: err.errmsg})
+            }
+          });
         }
         else {
-          //const questionsToRender = questions.map(q => q._id)
-          const profileImage = profile.image
-          console.log(profileImage)
-          res.render('profile', {image: profileImage, questions: questions})
+          //find questions by their ids
+          Question.find({profile_id: req.user.username}, function (err, questions) {
+            if (err) {
+              console.log(err)
+              res.render('profile', {error: err.errmsg})
+            }
+            else {
+              const question_ids = questions.map(q => q._id)
+              Profile.updateOne({user_id: req.user.username}, {question_ids: question_ids}, function(err,updatedProf) {
+                if (err) {
+                  console.log(err)
+                  res.render(profile, {err:err.errmsg})
+                }
+              })
+              const profileImage = profile.image
+              console.log(profileImage)
+              res.render('profile', {image: profileImage, questions: questions})
             }
           })
+          }
         }
-      }
     })
   });
 
