@@ -8,10 +8,10 @@ First Impressions is a web-based game that presents users with a photo of a stra
 
 ## Data Model
 
-The application will store Profiles (user-uploaded), Users and Questions
+The application will store Users, Profiles, and Questions (user-uploaded)
 
 * users can have one profile (via references)
-* each profile can have multiple questions (by embedding)
+* each profile can have multiple questions (via references)
 
 An Example User:
 
@@ -19,27 +19,35 @@ An Example User:
 {
   email: "devinlewtan@gmail.com",
   password: "$ecret$auce",
-  profile: // a reference to a Profile object
 }
 ```
 
-An Example Profile with Embedded Questions:
+An Example Profile:
 
 ```javascript
 {
-  email: // a reference to a User object
-  image: 'images/girl.jpg',
-  questions: [
-    {
-    label: "what is my name?",
-    options: [
-      { value: "Devin", checked: true }, 
-      { value: "Olivia", checked: false }, 
-      { value: "Mackenzie", checked: false }, 
-      { value: "Jessica", checked: false },
-      ]
-   ,
+  user_id: 'devinlewtan@gmail.com', // a reference to a User object
+  image: {
+    contentType: 'image/png',
+    data: Buffer,
+  },
+  question_ids: [24trgve5g34, 34t5yhedfgw3, 4t3ergw434, 4t4wtwefsd],
 }
+```
+An Example Question:
+
+```javascript
+{
+	profile_id: "devinlewtan@gmail.com",
+	question: "what is my name?",
+  answers: [
+    {letter: 'a', value: 'Devin', timesVoted: 0},
+    {letter: 'b', value: 'Anna', timesVoted: 0},
+    {letter: 'c', value: 'Erica', timesVoted: 0},
+    {letter: 'd', value: 'Olivia', timesVoted: 0},
+  ],
+	correctAnswer: 'a',
+};
 ```
 
 ## [Link to Commented First Draft Schema](https://github.com/nyu-csci-ua-0480-008-spring-2020/devinlewtan-final-project/blob/6b9c07d862e3c4e1b2b903ec97d8684cc32678c6/db.js#L4)
@@ -58,11 +66,11 @@ An Example Profile with Embedded Questions:
 
 ![user login](wireframes/wireframe_signin.png)
 
-/profile/create - page for creating a new profile 
+/profile/ - page for creating a new profile 
 
 ![profile create](wireframes/wireframe_create_profile.png)
 
-/profile/mine - page for showing how your profile looks (same as home page for non registered users)
+/profile/ - page for showing how your profile looks (same as home page for non registered users)
 
 ![profile example](wireframes/wireframe_example.png)
 
@@ -84,22 +92,25 @@ An Example Profile with Embedded Questions:
 3. as a user, I can upload a profile with the site
 4. as a user, I can see what others guessed
 5. as a user, I can share this with my friends (social media)
+6. as a user, I can log out of the site
 
 ## Research Topics
 
-* (4 points) Integrate [Google user sign in](https://developers.google.com/identity/sign-in/web/sign-in)
-    * I'm going to be using Google for user authentication
-    * I want login to be as frictionless as possible to encourage more users to create profiles 
-* (5 points) Implement quiz functionality / html
-    * see <code>https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript</code>
-    * I've never had to build something that has multiple answers with right/wrong statuses. It should be a good challenge for this assignment!
-* (4 points) React.js
-    * use react.js as the frontend framework. I am looking forward to learning react because I feel it is a transferrable skill from school to full time engineering gigs.
-* maybe look into TypeScript? (seems like a more secure form of Javascript regarding type errors)
+* (5 points) Integrate user authentication
+  * I'm going to be using passport for user authentication
+  * I'm going to include GoogleOauth as well as Twitter (using passport)
+  * I want login to be as frictionless as possible to encourage more users to create profiles 
+* (2 points) Implement quiz functionality / html
+  * see <code>https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript</code>
+  * I've never had to build something that has multiple answers with right/wrong statuses. It should be a good challenge for this assignment!
+* (3 points) User uploaded images
+  * accept user uploaded images. requires saving images to database in Buffer format at rendering. This has proven to be quite difficult so far... definitely consider it part of my research!
+
+10 points total out of 8 required points 
 
 ## [Link to Initial Main Project File](https://github.com/nyu-csci-ua-0480-008-spring-2020/devinlewtan-final-project/blob/d7a93d52d3a7f440ab183288925033ad5d89984d/app.js#L1)
 
 ## Annotations / References Used
 
-1. [Google user sign in](https://developers.google.com/identity/sign-in/web/sign-in) - (add link to source code that was based on this)
+1. [passport.js authentication docs](http://passportjs.org/docs) - (add link to source code that was based on this)
 2. [tutorial on quiz functionality / html](https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript) - (add link to source code that was based on this)
