@@ -205,25 +205,28 @@ app.post('/profile', (req, res) => {
 })
 
 app.get('/profile/results', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+
+//storing images in db
+const multer = require("multer");
 const upload = multer({limits: {fileSize: 2000000 },dest:'./public/images/'})
-app.post('/uploadpicture', upload.single('picture'), function (req, res){
-if (req.file === null) {
+app.post('/uploadpicture', upload.single('picture'), (req, res) => {
+  console.log("req file", req.file)
+if (!req.file) {
    // If Submit was accidentally clicked with no file selected...
   res.render('profile', { error:'Please select a picture file to submit!'});
 } else {
    const newImg = fs.readFileSync(req.file.path);
-   // encode the file as a base64 string.
    const encImg = newImg.toString('base64');
-   // define your new document
+
    const newItem = {
-      //description: req.body.description,
       contentType: req.file.mimetype,
-      //size: req.file.size,
       data: Buffer.from(encImg, 'base64'),
    };
-   console.log("upload", newItem)
-    Profile.updateOne({user_id: res.locals.user},{image: newItem}, function(err, savedProf) {
-        if (err) { res.send(err) }
+    Profile.updateOne({ user_id: res.locals.user }, { image: newItem }, (err, savedProf) => {
+        if (err) {
+          console.log(err)
+          res.send(err)
+        }
         else {
           console.log("success", savedProf)
           res.redirect('/profile')
