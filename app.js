@@ -177,11 +177,12 @@ app.post('/profile', (req, res) => {
   const newQuestion = new Question({
     profile_id: req.user.username,
     question: req.body.question,
-    answers: {
-      a: req.body.a,
-      b: req.body.b,
-      c: req.body.c,
-    },
+    answers: [
+      { letter: 'a', value: req.body.a, timesVoted: 0 },
+      { letter: 'b', value: req.body.b, timesVoted: 0 },
+      { letter: 'c', value: req.body.c, timesVoted: 0 },
+      { letter: 'd', value: req.body.d, timesVoted: 0 },
+    ],
     correctAnswer: req.body.correctAnswer,
   })
   Question.find({profile_id: req.user.username, question: req.body.question}, function (err, q) {
