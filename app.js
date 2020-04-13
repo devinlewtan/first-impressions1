@@ -134,8 +134,6 @@ app.get('/login', (req, res) => {
 
   app.get('/profile', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
   //render image and questions
-  Profile.find({user_id: profile_id}, function (err, profile) {
-    if (err) {
       res.render('profile', {error: err.errmsg})
     }
     else {
@@ -188,7 +186,8 @@ app.post('/profile', (req, res) => {
     if (q.length === 0) {
       newQuestion.save((err, savedQues) => {
         if (err) {
-           res.render('profile', {error: err.errmsg});
+          console.log(err)
+          res.render('profile', {error: err.errmsg});
         } else {
           console.log(savedQues, "has been added to db!")
           res.redirect('/profile');
@@ -196,7 +195,8 @@ app.post('/profile', (req, res) => {
       })
     }
     else if (err) {
-      res.send(err.errmsg)
+      console.log(err)
+      res.render('profile', {err: err.errmsg})
     }
     else {
       res.redirect('/profile');
@@ -205,6 +205,17 @@ app.post('/profile', (req, res) => {
 })
 
 app.get('/profile/results', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+  //find questions by their ids
+  Question.find({profile_id: req.user.username}, function (err, questions) {
+    if (err) {
+      console.log(err)
+      res.render('profile', {error: err.errmsg})
+    }
+    else {
+      res.render('results', {questions: questions})
+    }
+  })
+})
 
 //storing images in db
 const multer = require("multer");
@@ -234,10 +245,6 @@ if (!req.file) {
       })
     }
   })
-
-app.set('view engine', 'hbs');
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({ extended: false }));
 
   const port = 3000;
   app.listen(port);
