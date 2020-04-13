@@ -15,11 +15,12 @@ app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 
+//MODELS
 const User = mongoose.model('User');
 const Profile = mongoose.model('Profile');
 const Question = mongoose.model('Question');
 
-//middleware
+// SESSIONS
 const session = require('express-session');
 app.use(session({
   secret: 'secret for signing session id',
@@ -27,7 +28,6 @@ app.use(session({
   saveUninitialized: false
 }));
 
-//session store username
 //PASSPORT
 const passport = require('passport');
 const connectEnsureLogin = require('connect-ensure-login');
@@ -74,7 +74,6 @@ app.get('/', (req, res) => {
 });
 })
 
-//need to improve authentication for both register and login - looking into PassportJS
 app.get('/register', (req, res) => {
   res.render('register')
 });
