@@ -14,7 +14,7 @@ UserSchema.plugin(passportLocalMongoose);
 const QuestionSchema = new mongoose.Schema({
 	profile_id: String,
 	question: String,
-  answers: Object,
+  answers: [Object],
 	correctAnswer: String,
 });
 
@@ -28,7 +28,7 @@ const ProfileSchema = new mongoose.Schema({
 		data: Buffer,
 		contentType: String
 	},
-  question_ids: [Object],
+  question_ids: [String],
 });
 
 // is the environment variable, NODE_ENV, set to PRODUCTION?
