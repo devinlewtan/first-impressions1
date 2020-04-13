@@ -25,7 +25,7 @@ const ProfileSchema = new mongoose.Schema({
     required: true,
   },
   image: {
-		data: Buffer,
+		data: String,
 		contentType: String
 	},
   question_ids: [String],
