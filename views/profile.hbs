@@ -13,6 +13,46 @@
 <input class="button" type="submit" value="Save image" onchange="loadFile({{image}})">
 </form>
 
+<p> Next, add up to 10 questions about yourself! Get creative with your answers.</p>
+
+<button class="button" type="button" onclick="showHide()">Add question +</button>
+</br></br>
+<div id="myDIV" style="display: none">
+<form method="post" action="/profile">
+  question: <input type="text" name="question"></br>
+  </br>
+  a) <input type="text" name="a"></br>
+  b) <input type="text" name="b"></br>
+  c) <input type="text" name="c"></br>
+  d) <input type="text" name="d"></br>
+  </br>
+  correct answer (just the letter!): <input type="text" size="2" name="correctAnswer"></br>
+  </br>
+	<input class="button" type="submit" value="Save">
+</form>
+</div>
+<br>
+
+
+<h1> my questions </h1>
+<a href="profile/results">Show me what people are guessing about me</a><br>
+
+<div class="manyQuestions">
+{{#each questions}}
+<div class="singleQuestion">
+    <h2>{{this.question}}</h2>
+          <div class="manyAnswers">
+          {{#each this.answers}}
+            <div class="singleAnswer">
+            <label>{{this.value}}</label><br>
+          </div>
+          {{/each}}
+        </div>
+</div>
+{{/each}}
+</div>
+</div>
+</div>
 
 <script>
 const loadFile = function(event) {
@@ -28,33 +68,3 @@ const showHide = function() {
   }
 }
 </script>
-
-<p> Next, add up to 10 questions about yourself! Get creative with your answers.</p>
-
-<button type="button" onclick="showHide()">Add question +</button>
-
-<div id="myDIV" style="display: none">
-<form method="post" action="/profile">
-  Question: <input type="text" name="question"></br>
-  Answer a: <input type="text" name="a"></br>
-  Answer b: <input type="text" name="b"></br>
-  Answer c: <input type="text" name="c"></br>
-  Correct Answer (just the letter!): <input type="text" name="correctAnswer"></br>
-	<input type="submit" value="Save">
-</form>
-</div>
-
-<!-- here! -->
-<img src='/public/images/{{image}}' />
-
-{{#each questions}}
-<div>
-    <p>{{this.question}}</p>
-        <ul>
-          <!-- here! need to change name to be associated with question number -->
-            <li><label><input type="radio" name="q2" value="a">{{this.answers.a}}</label></li>
-            <li><label><input type="radio" name="q2" value="b"> {{this.answers.b}}</label></li>
-            <li><label><input type="radio" name="q2" value="c"> {{this.answers.c}}</label></li>
-        </ul>
-</div>
-{{/each}}
