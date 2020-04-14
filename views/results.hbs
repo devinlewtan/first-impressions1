@@ -1,0 +1,19 @@
+<head>
+  <link rel="stylesheet" href="/css/questions.css">
+</head>
+<br>
+<div class="singleQuestion">
+<a href="/profile" class="button">Back to profile</a>
+<br>
+<h3> Let's see what people think you are like... are you nervous?</h3>
+<div class="manyQuestions">
+{{#each questions}}
+<div class="singleQuestion">
+    <h2>{{this.question}}</h2>
+          {{#each this.answers}}
+          <h3><strong>{{this.value}}</strong> - guessed {{this.timesVoted}} times </h3>
+          {{/each}}
+</div>
+{{/each}}
+</div>
+</div>
