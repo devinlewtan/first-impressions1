@@ -47,31 +47,60 @@ app.use(function (req, res, next) {
   next()
 })
 
+//ROUTES
 //should render random question from database (and the image of the associated user profile)
 app.get('/', (req, res) => {
   //generate random index
   const random = function(max) { return  Math.floor(Math.random() * Math.floor(max));}
   //grab random question from random profile
-  Profile.find({}, function (err, profiles) {
-    if (err) { res.send(err.errmsg) }
+  Profile.find({question_ids: {$exists: true, $not: {$size: 0}}}, function (err, profiles) {
+    if (err) {
+      console.log(err)
+      res.send(err.errmsg)
+    }
     else {
       let prof = profiles[random(profiles.length)]
-      if (prof.question_ids.length > 0) {
-        let ques = Array.from(prof.question_ids)[random(prof.question_ids.length)]
-        Question.find({_id: ques}, function (err, q) {
-          if (err) { res.render('play', {error: err.errmsg})}
-          else {
-            //render profile picture and random question
-            console.log(prof.image)
-            res.render('play', {question: q, image: prof.image})
+      let ques = Array.from(prof.question_ids)[random(prof.question_ids.length)]
+      Question.find({_id: ques}, function (err, q) {
+        if (err) {
+          console.log(err)
+          res.render('play', {error: err.errmsg})
+        }
+        else {
+          //render profile picture and random question
+          res.render('play', {question: q, image: prof.image})
           }
       })
     }
-    else {
-      res.redirect("/")
-    }
-  }
 });
+})
+
+app.post('/', (req, res) => {
+  const { question_id, userGuess } = req.body
+  console.log(req.body)
+  Question.find({_id: question_id}, function (err, q) {
+    if (err) {
+      console.log(err)
+      res.render('play', {error: err.errmsg})
+    }
+    else {
+      let style = ''
+      if (userGuess === q.correctAnswer) {
+        style = "color:green; font-weight:bold;"
+      }
+      else {
+        style = "color:red; font-weight:bold;"
+      }
+      res.render('play', {question: q})
+      }
+  })
+  Question.updateOne(
+     { _id: question_id, "answers.letter": userGuess },
+     { $inc: { "answers.$.timesVoted" : 1 } },
+     (err, res) => {
+       if (err) throw err;
+       console.log(res, " document(s) updated");
+     })
 })
 
 app.get('/register', (req, res) => {
