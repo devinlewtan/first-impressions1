@@ -1,0 +1,40 @@
+.singleQuestion {
+  background-color: white;
+  border-radius: 20px;
+  padding: 50px;
+  margin: 15px;
+  text-align: center;
+  align-items: center;
+  width: auto;
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.manyQuestions {
+  grid-template-columns: repeat(2, 1fr);
+  margin: 15px;
+  display: grid;
+  align-items: center;
+}
+
+.singleAnswer {
+  background-color: #E9ECA3;
+  border-radius: 20px;
+  padding: 15px;
+  margin: 10px;
+  white-space: nowrap;
+  width: 150px;
+}
+
+.manyAnswers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  position: relative;
+  max-width: fit-content;
+  padding: 5px;
+}
+
+label {
+  font-size: 15px;
+}
